@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mi IA</title>
+<meta name="description" content="Tu IA personal: te conoce por todo lo que guarda tu Neural Brain, aprende de ti y crece contigo.">
+<meta name="theme-color" content="#05060d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mi IA">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icons/icon-96.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="base.css">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="sky" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+<canvas id="net" aria-hidden="true"></canvas>
+<div id="app">
+  <aside id="side"></aside>
+  <main id="main"><div class="skel"></div></main>
+</div>
+<nav id="dock" hidden></nav>
+<div class="back" id="back"></div>
+<section class="sheet" id="sheet" role="dialog" aria-modal="true"></section>
+<div id="toast" role="status"></div>
+<!-- La lógica de la IA es la misma de Neural Brain (una sola memoria, un solo cerebro) -->
+<script src="../Neural-Brain-Claude/brain-learn.js"></script>
+<script src="../Neural-Brain-Claude/ai-core-lib.js"></script>
+<script src="../Neural-Brain-Claude/graphs.js"></script>
+<script src="shell.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

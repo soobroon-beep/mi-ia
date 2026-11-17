@@ -1,0 +1,46 @@
+/* MI IA · estilos propios (sobre base.css, el mismo sistema «liquid glass» de Neural Brain) */
+:root{--accent:#8b6bff}
+#sky .a{background:radial-gradient(circle,#3a26c9 0,transparent 65%)}
+#sky .b{background:radial-gradient(circle,#7a2fc4 0,transparent 65%)}
+#sky .c{background:radial-gradient(circle,#0d5f8c 0,transparent 65%)}
+main{max-width:1020px}
+#dock button{position:relative}
+#dock button span{font-size:9.5px}
+.brandimg{border-radius:13px;box-shadow:0 6px 20px -6px rgba(130,100,255,.7)}
+@media(min-width:980px){
+  #side:not(:empty){overflow:hidden}
+  .side-chats{flex:1;min-height:60px;overflow:auto;margin:0 -4px;padding:0 4px}
+  .side-chats .ai-lhead{display:none}
+  .side-foot{border-top:1px solid var(--line);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+  .side-user{display:flex;align-items:center;gap:10px;padding:6px 8px}
+  .side-user img{border-radius:11px}.side-user span{flex:1;min-width:0}.side-user b{display:block;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.side-user small{color:var(--muted);font-size:11px}
+  .ai-listbtn{display:none}
+}
+.ai-head{position:sticky;top:0;z-index:20;margin:0 -16px 14px;padding:calc(10px + var(--safe-t)) 16px 10px;background:linear-gradient(rgba(5,6,13,.92),rgba(5,6,13,.6));-webkit-backdrop-filter:var(--blur-s);backdrop-filter:var(--blur-s);border-bottom:1px solid var(--line)}
+main{padding-top:0}
+@media(min-width:980px){.ai-head{margin:0 -40px 18px;padding:22px 40px 14px}}
+.ai-head h1{font-size:22px}
+.ai-av{background:none;border:0;padding:0;cursor:pointer}
+.ai-live{display:inline-block;width:7px;height:7px;border-radius:50%;background:#5a6578;margin-right:6px;vertical-align:1px}
+.ai-live.ok{background:#2bd4a4;box-shadow:0 0 8px #2bd4a4;animation:pulse 2.2s infinite}
+.side-chats .ai-citem small{font-size:10.5px}
+.ai-sheetlist{margin-top:6px}.ai-sheetlist .ai-citem .ai-cdel{opacity:.7}
+.welcome .wl-orb img{border-radius:34px;box-shadow:0 30px 70px -20px rgba(130,90,255,.8);animation:wlFloat 5s ease-in-out infinite}
+@keyframes wlFloat{50%{transform:translateY(-8px)}}
+.welcome .steps .bicon{width:34px;height:34px;flex:0 0 34px}
+/* Guía */
+.ai-guide-hero{padding:20px 20px;background:radial-gradient(circle at 85% 20%,rgba(154,123,255,.25),transparent 55%),var(--glass)}
+.ai-guide-hero small{color:#c6a8ff;font-weight:700;letter-spacing:.5px}.ai-guide-hero h2{margin:4px 0 8px;font-size:22px;letter-spacing:-.5px}.ai-guide-hero p{margin:0;color:var(--muted);line-height:1.6;font-size:14px}.ai-guide-hero b{color:var(--text)}
+.ai-mapbox{padding:12px}
+.ai-map{width:100%;max-width:660px;height:auto;display:block;margin:0 auto}
+.ai-map .gt1{fill:#eef3fb;font:700 12.5px Inter,sans-serif}.ai-map .gt2{fill:#8592a8;font:500 10.5px Inter,sans-serif}
+.ai-map .gflow{stroke-dasharray:6 8;animation:gflow 1.6s linear infinite}
+@keyframes gflow{to{stroke-dashoffset:-28}}
+.ai-map .gpulse{animation:pulse 2s infinite}
+.ai-examples{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.ai-examples button{display:flex;gap:10px;align-items:center;text-align:left;padding:12px 14px;border-radius:16px;font-size:13px;color:var(--text);transition:transform .3s var(--spring),border-color .3s}
+.ai-examples button svg{width:17px;height:17px;flex:0 0 17px;color:#c6a8ff}.ai-examples button:active{transform:scale(.97)}.ai-examples button:hover{border-color:var(--line-2)}
+.ai-steps{padding:6px 16px}
+.ai-step{display:flex;gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}.ai-step:last-child{border-bottom:0}
+.ai-step>span{width:28px;height:28px;flex:0 0 28px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:13px;background:linear-gradient(140deg,#5f7dff,#8b6bff)}
+.ai-step b{font-size:14px}.ai-step p{margin:3px 0 0;color:var(--muted);font-size:13px;line-height:1.55}.ai-step p b{color:var(--text);font-size:13px}
