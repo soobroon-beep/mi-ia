@@ -76,8 +76,9 @@
     if (rec) { stopMic(); return; }
     const el = $('#' + btn.dataset.target); if (!el) return; const base = el.value ? el.value.replace(/\s*$/, ' ') : '';
     rec = new SR(); rec.lang = 'es-MX'; rec.continuous = true; rec.interimResults = true; btn.classList.add('rec');
-    rec.onresult = e => { let t = ''; for (let i = 0; i < e.results.length; i++) t += e.results[i][0].transcript; el.value = base + t; el.dispatchEvent(new Event('input', {bubbles: true})); };
-    rec.onend = () => stopMic(); rec.onerror = () => stopMic(); rec.start();
+    const VL = window.VozLimpia; let said = ''; // une el dictado sin duplicar lo que Android repite y al final quita muletillas y repeticiones
+    rec.onresult = e => { said = VL ? VL.fromResults(e.results) : Array.from(e.results).map(r => r[0].transcript).join(''); el.value = base + said; el.dispatchEvent(new Event('input', {bubbles: true})); };
+    rec.onend = () => { if (VL && said) { el.value = base + (VL.clean(said) || said); el.dispatchEvent(new Event('input', {bubbles: true})); } stopMic(); }; rec.onerror = () => stopMic(); rec.start();
   }
 
   /* ───────── Firebase ───────── */

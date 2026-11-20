@@ -159,7 +159,7 @@
       const tm = {role: 'assistant', typing: true, content: ''}; arr.push(tm); paintLog(true);
       const hist = arr.filter(m => !m.typing && m !== um).slice(-10).map(m => ({role: m.role, content: m.content}));
       let r;
-      try { r = await c.L.chat([{role: 'system', content: A.coreSystem(ctx(q))}, ...hist, {role: 'user', content: q}], {maxTokens: 1600, timeout: 100000}); }
+      try { r = await c.L.chat([{role: 'system', content: A.coreSystem(ctx(q)) + (window.VozLimpia ? VozLimpia.HINT : '')}, ...hist, {role: 'user', content: q}], {maxTokens: 1600, timeout: 100000}); }
       catch { arr.splice(arr.indexOf(tm), 1); arr.push({id: '', role: 'assistant', content: '**No pude pensar ahora mismo.** Las IAs gratuitas no respondieron; inténtalo en un momento.', ts: Date.now()}); paintLog(true); return; }
       const pa = A.parseActions(r.text), am = {id: nid(), chat: id, role: 'assistant', content: pa.text || r.text, actions: pa.actions, done: [], ts: Date.now(), model: r.model};
       arr[arr.indexOf(tm)] = am; paintLog(true);
