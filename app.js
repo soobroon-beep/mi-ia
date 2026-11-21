@@ -318,7 +318,7 @@
   }
   async function notify(title, body) {
     if (!('Notification' in window) || Notification.permission !== 'granted') return;
-    try { const reg = navigator.serviceWorker && await navigator.serviceWorker.getRegistration(); const o = {body, icon: 'icons/icon-192.png', badge: 'icons/icon-96.png', tag: 'nb-ai', renotify: true}; if (reg) reg.showNotification(title, o); else new Notification(title, o); } catch {}
+    try { const reg = navigator.serviceWorker && await navigator.serviceWorker.getRegistration(); const o = {body, icon: 'icons/icon-192.png?v=3', badge: 'icons/icon-96.png?v=3', tag: 'nb-ai', renotify: true}; if (reg) reg.showNotification(title, o); else new Notification(title, o); } catch {}
   }
 
   /* ───────── Bots ───────── */

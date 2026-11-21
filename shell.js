@@ -123,7 +123,7 @@
     if (window.AICore) { AICore.attach(); AICore.setTab(start()); }
   }
   function start() { try { const q = new URLSearchParams(location.search), t = q.get('tab'); if (q.get('new')) { localStorage.removeItem('nb_ai_chat'); return 'chat'; } if (t) return t; } catch {} return localStorage.getItem('nb_ai_tab') || 'chat'; }
-  function sideInfo() { const el = $('#sideUser'); if (!el || !S.user) return; el.innerHTML = `<img src="${esc(S.user.photoURL || 'icons/icon-96.png')}" alt="" width="32" height="32"><span><b>${esc(S.user.displayName || 'Tu cuenta')}</b><small>${S.brains.length} cerebros · ${S.events.length} recuerdos</small></span><button class="mini" data-mi="logout" title="Salir">${ic('logout')}</button>`; }
+  function sideInfo() { const el = $('#sideUser'); if (!el || !S.user) return; el.innerHTML = `<img src="${esc(S.user.photoURL || 'icons/icon-96.png?v=3')}" alt="" width="32" height="32"><span><b>${esc(S.user.displayName || 'Tu cuenta')}</b><small>${S.brains.length} cerebros · ${S.events.length} recuerdos</small></span><button class="mini" data-mi="logout" title="Salir">${ic('logout')}</button>`; }
   function nav(k) { document.querySelectorAll('[data-nav]').forEach(b => b.classList.toggle('on', b.dataset.nav === k || (b.dataset.nav === 'more' && ['mem', 'conn', 'guide'].includes(k)))); if (window.AICore) AICore.badge(); }
   function more() {
     const it = (k, i, t, d) => `<button class="set" data-ai="tab" data-k="${k}"><span class="bicon" style="width:38px;height:38px">${ic(i)}</span><span class="bd"><b>${t}</b><small>${d}</small></span></button>`;
