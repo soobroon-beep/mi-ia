@@ -1,6 +1,6 @@
 /* MI IA · armazón de la app: cuenta de Google, datos de Neural Brain en vivo, navegación, hojas, avisos.
    La pantalla de la IA vive en app.js (window.AICore). La memoria es la de Neural Brain (mismo proyecto de Firebase):
-   Mi IA no tiene una base aparte, así nunca hay dos memorias distintas. */
+   Mi iA no tiene una base aparte, así nunca hay dos memorias distintas. */
 'use strict';
 (function () {
   const NB_URL = '../Neural-Brain-Claude/';
@@ -90,7 +90,7 @@
       firebase.initializeApp(FB_CFG); db = firebase.firestore();
       try { await db.enablePersistence({synchronizeTabs: true}); } catch {}
       firebase.auth().onAuthStateChanged(u => { S.user = u; S.ready = true; detach(); if (u) attach(); render(); dispatchEvent(new Event('mi-auth')); });
-    } catch (e) { S.ready = true; $('#main').innerHTML = `<div class="empty"><b>No pude conectar</b>Revisa tu internet y vuelve a abrir Mi IA.<br><small>${esc(e.message)}</small></div>`; }
+    } catch (e) { S.ready = true; $('#main').innerHTML = `<div class="empty"><b>No pude conectar</b>Revisa tu internet y vuelve a abrir Mi iA.<br><small>${esc(e.message)}</small></div>`; }
   }
   function detach() { unsubs.forEach(f => { try { f(); } catch {} }); unsubs = []; Object.values(noteUnsubs).forEach(f => { try { f(); } catch {} }); noteUnsubs = {}; S.brains = []; S.notes = {}; S.events = []; S.status = {}; }
   let rT = 0; const soft = () => { clearTimeout(rT); rT = setTimeout(() => { if (window.AICore) AICore.paint(); }, 120); };
@@ -114,7 +114,7 @@
     if (!S.user) { dock.hidden = true; side.innerHTML = ''; m.innerHTML = welcome(); document.body.classList.remove('in'); return; }
     document.body.classList.add('in'); dock.hidden = false;
     dock.innerHTML = DOCK.map(([k, t, i]) => `<button data-nav="${k}">${ic(i)}<span>${t}</span></button>`).join('');
-    side.innerHTML = `<div class="side-brand"><img src="icons/icon-192.png" alt="" width="42" height="42" class="brandimg"><div><b>Mi IA</b><small>Tu IA personal</small></div></div>
+    side.innerHTML = `<div class="side-brand"><img src="icons/icon-192.png" alt="" width="42" height="42" class="brandimg"><div><b>Mi iA</b><small>Tu IA personal</small></div></div>
       ${NAV.map(([k, t, i]) => `<button class="side-nav" data-nav="${k}">${ic(i)}${t}</button>`).join('')}
       <div class="side-sep">Conversaciones</div><div class="ai-chatlist side-chats"></div>
       <div class="side-foot"><button class="side-nav" data-mi="nb">${ic('brain')}Abrir Neural Brain</button><div class="side-user" id="sideUser"></div></div>`;
@@ -133,7 +133,7 @@
   }
   function welcome() {
     const f = (i, t, d) => `<div class="glass"><span class="bicon">${ic(i)}</span><span><b>${t}</b>${d}</span></div>`;
-    return `<div class="welcome view"><div class="wl-orb"><img src="icons/icon-512.png" alt="" width="132" height="132"></div><h1>Mi IA</h1>
+    return `<div class="welcome view"><div class="wl-orb"><img src="icons/icon-512.png" alt="" width="132" height="132"></div><h1>Mi iA</h1>
       <p>Tu IA personal. Te conoce por todo lo que guarda tu Neural Brain, aprende de cada conversación y crece contigo.</p>
       <div class="steps">${f('chat', 'Platica', ' · con historial; responde con tus proyectos, tus bots y tu agenda')}${f('target', 'Vigila', ' · lo que le pidas, con informes y alertas')}${f('bot', 'Tus bots', ' · cuál mejora, cuál no y qué probar')}${f('grow', 'Crece', ' · un núcleo que se hace más grande mientras más sabe')}</div>
       <button class="gbtn" data-mi="login"><svg width="20" height="20" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>Entrar con Google</button>
@@ -148,9 +148,9 @@
     if (d.act === 'mic') return mic(t);
     if (d.act === 'closeSheet') return closeSheet();
     if (d.mi === 'nb') return window.open(NB_URL, '_blank', 'noopener');
-    if (d.mi === 'logout') { if (confirm('¿Salir de Mi IA?')) { closeSheet(); await firebase.auth().signOut(); } return; }
+    if (d.mi === 'logout') { if (confirm('¿Salir de Mi iA?')) { closeSheet(); await firebase.auth().signOut(); } return; }
     if (d.mi === 'login') {
-      if (window.self !== window.top) { toast('Abre Mi IA en una pestaña nueva para iniciar sesión'); return; }
+      if (window.self !== window.top) { toast('Abre Mi iA en una pestaña nueva para iniciar sesión'); return; }
       const pr = new firebase.auth.GoogleAuthProvider(); pr.setCustomParameters({prompt: 'select_account'});
       try { await firebase.auth().signInWithPopup(pr); }
       catch (er) { const c = er && er.code; toast(c === 'auth/popup-blocked' ? 'El navegador bloqueó la ventana: permite ventanas emergentes' : c === 'auth/popup-closed-by-user' || c === 'auth/cancelled-popup-request' ? 'Inicio de sesión cancelado' : c === 'auth/unauthorized-domain' ? 'Este dominio no está autorizado en Firebase' : 'No se pudo iniciar sesión (' + (c || 'error') + ')'); }

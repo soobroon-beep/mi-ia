@@ -1,7 +1,7 @@
-/* Mi IA · service worker: abre sin internet, pero siempre busca primero la versión nueva.
+/* Mi iA · service worker: abre sin internet, pero siempre busca primero la versión nueva.
    También guarda los archivos compartidos de Neural Brain (misma cuenta, mismo cerebro). */
-const CACHE = 'mi-ia-v3';
-const ASSETS = ['./', './index.html', './base.css', './app.css', './voz-limpia.js', './shell.js', './app.js', './manifest.json', './icons/icon-192.png', './icons/icon-96.png', './icons/icon-512.png', './icons/apple-touch-icon.png', './icons/icon.svg', './icons/favicon.ico', './icons/maskable-192.png', './icons/maskable-512.png',
+const CACHE = 'mi-ia-v4';
+const ASSETS = ['./', './index.html', './base.css', './app.css', './voz-limpia.js', './shell.js', './app.js', './manifest.json', './icons/icon-32.png', './icons/icon-48.png', './icons/icon-64.png', './icons/icon-72.png', './icons/icon-96.png', './icons/icon-144.png', './icons/icon-192.png', './icons/icon-256.png', './icons/icon-384.png', './icons/icon-512.png', './icons/apple-touch-icon.png', './icons/icon.svg', './icons/favicon.ico', './icons/maskable-192.png', './icons/maskable-512.png',
   '../Neural-Brain-Claude/brain-learn.js', '../Neural-Brain-Claude/ai-core-lib.js', '../Neural-Brain-Claude/graphs.js'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).catch(() => {})); self.skipWaiting(); });
 self.addEventListener('activate', e => { e.waitUntil(caches.keys().then(ks => Promise.all(ks.filter(k => k.startsWith('mi-ia-') && k !== CACHE).map(k => caches.delete(k)))).then(() => self.clients.claim())); });

@@ -1,4 +1,4 @@
-# Mi IA · tu IA personal
+# Mi iA · tu IA personal
 
 App instalable (PWA) con su propio icono. Te conoce por **todo** lo que guarda tu **Neural Brain**: tus cerebros, tus recuerdos de **Nova Hub** y **VORTEX**, tus bots de **Nova Bot Lab**, tu **Google Calendar** y **Gmail** (si los conectas) y su propia memoria de tus conversaciones.
 
@@ -12,7 +12,7 @@ App instalable (PWA) con su propio icono. Te conoce por **todo** lo que guarda t
 - **Memoria**, **Conexiones** (todas tus apps y su estado en vivo) y una **Guía** hecha con tus datos.
 
 ## Cómo está armada
-- **Una sola memoria**: Mi IA usa el mismo proyecto de Firebase que Neural Brain (`neural-brain-148a4`, `users/{uid}/brains/_core`). No tiene base propia.
+- **Una sola memoria**: Mi iA usa el mismo proyecto de Firebase que Neural Brain (`neural-brain-148a4`, `users/{uid}/brains/_core`). No tiene base propia.
 - **Una sola lógica**: los prompts y el aprendizaje viven en Neural Brain (`ai-core-lib.js`, `brain-learn.js`, `graphs.js`) y esta app los carga desde ahí; el aprendizaje nocturno también corre allá (`scripts/learn.js`).
 - `index.html` + `shell.js` (cuenta, datos, navegación) · `app.js` (la IA) · `base.css` (el mismo diseño de Neural Brain) + `app.css` · `sw.js` · `manifest.json` · `icons/`.
 

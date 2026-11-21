@@ -26,7 +26,7 @@
   function detach() { X.unsubs.forEach(f => { try { f(); } catch {} }); X.unsubs = []; Object.assign(X, {uid: null, core: {}, coreReady: false, facts: [], chats: [], msgs: {}, watches: [], reports: [], proposals: [], growth: [], autoRan: false}); }
   function attach() {
     const S = C().S; if (!S.user) return detach(); if (X.uid === S.user.uid) return; detach(); X.uid = S.user.uid;
-    const on = (q, fn) => X.unsubs.push(q.onSnapshot(fn, e => console.warn('Mi IA', e && e.message)));
+    const on = (q, fn) => X.unsubs.push(q.onSnapshot(fn, e => console.warn('Mi iA', e && e.message)));
     on(coreRef(), d => { const first = !X.coreReady; X.core = d.exists ? d.data() : {}; X.coreReady = true; if (!d.exists && !d.metadata.fromCache) createCore(); if (first) afterLoad(); schedule(); });
     on(sub('notes'), s => { const before = X.facts.length; X.facts = s.docs.map(d => Object.assign({id: d.id}, d.data())); if (before && X.facts.length > before) X.burst = Date.now(); schedule(); });
     on(sub('chats').orderBy('updatedAt', 'desc').limit(60), s => { X.chats = s.docs.map(d => Object.assign({id: d.id}, d.data())); schedule(); });
@@ -36,7 +36,7 @@
   }
   async function createCore() {
     const now = Date.now();
-    await coreRef().set({kind: 'core', name: 'Mi IA', aiName: 'Neural', sources: ['novahub', 'vortex'], toVortex: false, autoLearn: true, createdAt: now, owner: C().firstName()}, {merge: true});
+    await coreRef().set({kind: 'core', name: 'Mi iA', aiName: 'Neural', sources: ['novahub', 'vortex'], toVortex: false, autoLearn: true, createdAt: now, owner: C().firstName()}, {merge: true});
     const w = [{id: 'resumen-diario', kind: 'daily', text: 'Resumen de cómo van mis proyectos, mis apps y mis bots, y qué viene en mi agenda', freq: 'diaria', hour: '08:00'},
       {id: 'bots-empeoran', text: 'Revisa mis bots de Nova Bot Lab: avísame si alguno empeora, pierde más de lo normal o deja de mandar resultados', freq: 'diaria', hour: '21:00'}];
     for (const x of w) await sub('watches').doc(x.id).set(Object.assign({on: true, createdAt: now, by: 'inicio'}, x), {merge: true});
